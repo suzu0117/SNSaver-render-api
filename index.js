@@ -7,7 +7,7 @@ import path from "path";
 const app = express();
 app.use(
     cors({
-        origin: "https://snsaver-web.onrender.com",
+        origin: "https://snsaver.onrender.com",
     }),
 );
 app.use(express.json());
