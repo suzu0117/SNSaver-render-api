@@ -44,6 +44,7 @@ router.get("/status/:id", async (req, res) => {
 });
 
 router.get("/health", (req, res) => {
+    console.log("Backend health check received");
     res.send("OK");
 });
 
