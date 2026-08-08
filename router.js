@@ -42,4 +42,8 @@ router.get("/status/:id", async (req, res) => {
     }
 });
 
+router.get("/health", (req, res) => {
+    res.send("OK");
+});
+
 export { router };
