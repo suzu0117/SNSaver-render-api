@@ -4,11 +4,13 @@ import express from "express";
 
 const router = express.Router();
 /*----------------------------------------ルーティング----------------------------------------*/
+let cloudFlareTunnel;
+
 router.post("/search", async (req, res) => {
     try {
         const username = req.body.username;
 
-        const response = await fetch(`${process.env.API}/api/search`, {
+        const response = await fetch(`${cloudFlareTunnel}/api/search`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,7 +32,7 @@ router.post("/search", async (req, res) => {
 router.get("/status/:id", async (req, res) => {
     try {
         const id = req.params.id;
-        const response = await fetch(`${process.env.API}/api/status/${id}`);
+        const response = await fetch(`${cloudFlareTunnel}/api/status/${id}`);
         const json = await response.json();
         res.status(response.status).json(json);
     } catch (error) {
@@ -45,6 +47,11 @@ router.get("/status/:id", async (req, res) => {
 
 router.get("/health", (req, res) => {
     console.log("Backend health check received");
+    res.send("OK");
+});
+
+router.post("/receiveCloudFlareTunnel", (req, res) => {
+    cloudFlareTunnel = req.body.cloudFlareTunnel;
     res.send("OK");
 });
 
