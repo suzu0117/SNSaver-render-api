@@ -1,8 +1,10 @@
+/*----------------------------------------初期設定----------------------------------------*/
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { router } from "./router.js";
 
+/*----------------------------------------サーバー設定----------------------------------------*/
 const app = express();
 app.use(
     cors({
@@ -11,8 +13,9 @@ app.use(
 );
 app.use(express.json());
 app.use("/api", router);
-
 const PORT = process.env.PORT || 3000;
+
+/*----------------------------------------サーバー起動----------------------------------------*/
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

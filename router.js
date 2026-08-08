@@ -1,8 +1,9 @@
+/*----------------------------------------初期設定----------------------------------------*/
 import "dotenv/config";
 import express from "express";
 
 const router = express.Router();
-
+/*----------------------------------------ルーティング----------------------------------------*/
 router.post("/search", async (req, res) => {
     try {
         const username = req.body.username;
@@ -14,7 +15,7 @@ router.post("/search", async (req, res) => {
             },
             body: JSON.stringify({ username: username }),
         });
-        console.log(response.status);
+
         const json = await response.json();
         return res.status(response.status).json(json);
     } catch (error) {
