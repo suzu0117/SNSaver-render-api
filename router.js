@@ -52,6 +52,7 @@ router.get("/health", (req, res) => {
 
 router.post("/receiveCloudFlareTunnel", (req, res) => {
     cloudFlareTunnel = req.body.cloudFlareTunnel;
+    console.log(cloudFlareTunnel);
     res.send("OK");
 });
 
